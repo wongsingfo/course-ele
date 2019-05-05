@@ -17,8 +17,23 @@ public class Main {
 		br.close();
 		return l;
 	}
-	public static void main(String[] args) throws Exception {
-		List<Class> classlist = parseCsv("1.csv");
+	
+	static void testPinyinConverter() {
+		PinyinConverter pc = new PinyinConverter();
+//		System.out.println(Integer.parseInt("90ED",16));
+//		System.out.println((int) '¹ù');
+		List<String> a = pc.getAbbr("»Æ¿¥");
+		for (String r : a) System.out.println(r);
+	}
+	
+	static void test() {
+		List<Class> classlist = null;
+		try {
+			classlist = parseCsv("1.csv");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Scanner in = new Scanner(System.in);
         String s = in.nextLine();
         for (Class c : classlist) {
@@ -30,5 +45,10 @@ public class Main {
         	System.out.println(classlist.get(i).score);
         }
         in.close();
+	}
+	
+	public static void main(String[] args)  {
+//		testPinyinConverter();
+		test();
 	}
 }
