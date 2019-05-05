@@ -17,26 +17,16 @@ public class Class implements Comparable<Class> {
 		info = s;
 		a = s.split(",");
 		courseID = a[0];
-		coursename = "";
-		for (int i=0;i<a[1].length();++i) {
-			coursename += a[1].charAt(i) + "?";
-		}
-		type = "";
-		for (int i=0;i<a[2].length();++i) {
-			type += a[2].charAt(i) + "?";
-		}
+		coursename = interleaveQ(a[1]);
+		type = interleaveQ(a[2]);
+
 		credit = a[3] + "学分";
 		if (a[4].indexOf('(') == -1) teacher = a[4];
 			else teacher = a[4].substring(0,a[4].indexOf('('));
 		classnum = a[5] + "班";
-		classunit = "";
-		for (int i=0;i<a[6].length();++i) {
-			classunit += a[6].charAt(i) + "?";
-		}
-		profession = "";
-		for (int i=0;i<a[7].length();++i) {
-			profession += a[7].charAt(i) + "?";
-		}
+
+		classunit = interleaveQ(a[6]);
+		profession = interleaveQ(a[7]);
 		grade = a[8] + "级";
 		time = "";
 		classroom = "";
@@ -59,10 +49,8 @@ public class Class implements Comparable<Class> {
 						"(" + c[1].substring(4) + ")?" ;
 			}
 		}
-		other = "";
-		for (int i=0;i<a[11].length();++i) {
-			other += a[11].charAt(i) + "?";
-		}
+		other = interleaveQ(a[11]);
+		
 		//public String info,courseID,coursename,type,credit,teacher,classnum,classunit,profession,grade,classroom,time,other;
 		regex[0] = courseID;
 		regex[1] = coursename;
@@ -108,4 +96,25 @@ public class Class implements Comparable<Class> {
 	public String toString() {
         return info;
     }
+	
+	/**
+	 * 将输入的字符串每个字母后面加一个问号，去掉regex中的特殊字符(包括不限于 空格和括号）
+	 * @author wck
+	 * @param s 如：ab c  de
+	 * @return a?b?c?d?e?
+	 */
+	private String interleaveQ(String s) {
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < s.length(); i++) {
+			char c = s.charAt(i);
+			if (Character.isSpaceChar(c) || c == '(' || c == ')' 
+					|| c == '+') {
+				// pass
+			} else {
+				sb.append(c);
+				sb.append('?');
+			}
+		}
+		return sb.toString();
+	}
 }

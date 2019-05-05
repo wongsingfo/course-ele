@@ -8,9 +8,11 @@ public class Main {
 		BufferedReader br = new BufferedReader(new FileReader(path));
 		String line = "";
 		while ((line = br.readLine()) != null) {
-			String[] a = line.split(",");
-			if (a.length == 0) continue;
-			l.add(new Class(line));
+			if (! line.isBlank()) {
+				String[] a = line.split(",");
+				if (a.length == 0) continue;
+				l.add(new Class(line));
+			}
 		}
 		br.close();
 		return l;
