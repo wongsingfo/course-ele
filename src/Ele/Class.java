@@ -5,9 +5,9 @@ import java.util.regex.Pattern;
 
 public class Class implements Comparable<Class> {
 	public String info,courseID,coursename,type,credit,teacher,classnum,classunit,profession,grade,classroom,time,other;
-	//info ÖĞµÄË³ĞòÎª ¿Î³ÌºÅ Ãû×Ö ÖÖÀà Ñ§·Ö ÀÏÊ¦ °àºÅ ¿ª¿Îµ¥Î» ×¨Òµ Äê¼¶ Ê±¼ä½ÌÊÒ ÈËÊı ±¸×¢  ÒÔ¶ººÅ¼ä¸ô
-	//¿Î³ÌºÅ Ñ§·Ö ÀÏÊ¦ °àºÅ Äê¼¶ È«´ÊÆ¥Åä
-	//Ãû×Ö ÖÖÀà ¿ª¿Îµ¥Î» ×¨Òµ Ê±¼ä ½ÌÊÒ  ²¿·ÖÆ¥Åä
+	//info ä¸­çš„é¡ºåºä¸º è¯¾ç¨‹å· åå­— ç§ç±» å­¦åˆ† è€å¸ˆ ç­å· å¼€è¯¾å•ä½ ä¸“ä¸š å¹´çº§ æ—¶é—´æ•™å®¤ äººæ•° å¤‡æ³¨  ä»¥é€—å·é—´éš”
+	//è¯¾ç¨‹å· å­¦åˆ† è€å¸ˆ ç­å· å¹´çº§ å…¨è¯åŒ¹é…
+	//åå­— ç§ç±» å¼€è¯¾å•ä½ ä¸“ä¸š æ—¶é—´ æ•™å®¤  éƒ¨åˆ†åŒ¹é…
 	public String [] a = null,b = null,c = null;
 	public int [] weight = {10,8,5,2,5,1,1,1,3,5,5,2};
 	public String [] regex = new String[12];
@@ -20,14 +20,14 @@ public class Class implements Comparable<Class> {
 		coursename = interleaveQ(a[1]);
 		type = interleaveQ(a[2]);
 
-		credit = a[3] + "Ñ§·Ö";
+		credit = a[3] + "å­¦åˆ†";
 		if (a[4].indexOf('(') == -1) teacher = a[4];
 			else teacher = a[4].substring(0,a[4].indexOf('('));
-		classnum = a[5] + "°à";
+		classnum = a[5] + "ç­";
 
 		classunit = interleaveQ(a[6]);
 		profession = interleaveQ(a[7]);
-		grade = a[8] + "¼¶";
+		grade = a[8] + "çº§";
 		time = "";
 		classroom = "";
 		b = a[9].split("<br />");
@@ -36,7 +36,7 @@ public class Class implements Comparable<Class> {
 			c = b[0].split(" ");
 			time = "(" + c[0] + ")?";
 			if (c.length > 2) {
-				//½ÌÊÒÎ»ÖÃ
+				//æ•™å®¤ä½ç½®
 				for (int j = 0 ; j < c[2].length(); ++j ) {
 					if (Character.isDigit(c[2].charAt(j))) break;
 					classroom += c[2].charAt(j);
@@ -68,9 +68,9 @@ public class Class implements Comparable<Class> {
 	}
 	public void match(String s) {
 		score = 0;
-		//Íê³É¸Ã¿ÎÓëÊäÈë×Ö·û´®sµÄÆ¥Åä£¬·µ»ØÆ¥ÅäµÄ·ÖÊı
-		//1.ÏÈ½«Ã¿¸ö¶ººÅ¸ô¿ªµÄÄÚÈİºÍs½øĞĞÆ¥Åä ¿¼ÂÇµ½ËõĞ´ infoÖĞ¿ÉÒÔ²»Á¬Ğø sÖĞÓ¦¸ÃÎªÁ¬Ğø
-		//±ê¼ÇÄÄĞ©²¿·Ö±»Æ¥ÅäÍê³É
+		//å®Œæˆè¯¥è¯¾ä¸è¾“å…¥å­—ç¬¦ä¸²sçš„åŒ¹é…ï¼Œè¿”å›åŒ¹é…çš„åˆ†æ•°
+		//1.å…ˆå°†æ¯ä¸ªé€—å·éš”å¼€çš„å†…å®¹å’Œsè¿›è¡ŒåŒ¹é… è€ƒè™‘åˆ°ç¼©å†™ infoä¸­å¯ä»¥ä¸è¿ç»­ sä¸­åº”è¯¥ä¸ºè¿ç»­
+		//æ ‡è®°å“ªäº›éƒ¨åˆ†è¢«åŒ¹é…å®Œæˆ
 		for (int i = 0 ; i < 12 ; ++ i)
 		{
 			Pattern p = Pattern.compile(regex[i]);
@@ -85,8 +85,8 @@ public class Class implements Comparable<Class> {
 			}
 		}
 		
-		//2.¿´Ò»¿´Î´±»Æ¥ÅäµÄ²¿·ÖÊÇ·ñ³öÏÖ·ñ¶¨´Ê
-		//3.¸øÒ»¸ö¼ÓÈ¨µÄ·ÖÊı£¨·ñ¶¨µÄ¸ø¸º·Ö£¬¿Ï¶¨µÄ½oÕı·Ö£©
+		//2.çœ‹ä¸€çœ‹æœªè¢«åŒ¹é…çš„éƒ¨åˆ†æ˜¯å¦å‡ºç°å¦å®šè¯
+		//3.ç»™ä¸€ä¸ªåŠ æƒçš„åˆ†æ•°ï¼ˆå¦å®šçš„ç»™è´Ÿåˆ†ï¼Œè‚¯å®šçš„çµ¦æ­£åˆ†ï¼‰
 	}
 	public int compareTo(Class c) {
 		if (c.score == score) return 0;else
@@ -98,9 +98,9 @@ public class Class implements Comparable<Class> {
     }
 	
 	/**
-	 * ½«ÊäÈëµÄ×Ö·û´®Ã¿¸ö×ÖÄ¸ºóÃæ¼ÓÒ»¸öÎÊºÅ£¬È¥µôregexÖĞµÄÌØÊâ×Ö·û(°üÀ¨²»ÏŞÓÚ ¿Õ¸ñºÍÀ¨ºÅ£©
+	 * å°†è¾“å…¥çš„å­—ç¬¦ä¸²æ¯ä¸ªå­—æ¯åé¢åŠ ä¸€ä¸ªé—®å·ï¼Œå»æ‰regexä¸­çš„ç‰¹æ®Šå­—ç¬¦(åŒ…æ‹¬ä¸é™äº ç©ºæ ¼å’Œæ‹¬å·ï¼‰
 	 * @author wck
-	 * @param s Èç£ºab c  de
+	 * @param s å¦‚ï¼šab c  de
 	 * @return a?b?c?d?e?
 	 */
 	private String interleaveQ(String s) {

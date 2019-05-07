@@ -21,8 +21,8 @@ public class Main {
 	static void testPinyinConverter() {
 		PinyinConverter pc = new PinyinConverter();
 //		System.out.println(Integer.parseInt("90ED",16));
-//		System.out.println((int) '¹ù');
-		List<String> a = pc.getAbbr("»Æ¿¥");
+//		System.out.println((int) 'éƒ­');
+		List<String> a = pc.getAbbr("é»„éª");
 		for (String r : a) System.out.println(r);
 	}
 	

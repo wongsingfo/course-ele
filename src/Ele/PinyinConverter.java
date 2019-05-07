@@ -13,15 +13,15 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * ÈËÃûÊ××ÖÄ¸
+ * äººåé¦–å­—æ¯
  * 
  * @author wck
  *
  */
 public class PinyinConverter {
 	/**
-	 * ·µ»ØËùÓĞ¿ÉÄÜµÄËõĞ´ £¨ÒòÎªÓĞ¶àÒô×Ö£¬ËùÒÔÓĞ¿ÉÄÜÓĞ¶àÖÖËõĞ´£©
-	 * @param name "»Æ¿¥"
+	 * è¿”å›æ‰€æœ‰å¯èƒ½çš„ç¼©å†™ ï¼ˆå› ä¸ºæœ‰å¤šéŸ³å­—ï¼Œæ‰€ä»¥æœ‰å¯èƒ½æœ‰å¤šç§ç¼©å†™ï¼‰
+	 * @param name "é»„éª"
 	 * @return {"hj"}
 	 */
 	List<String> getAbbr(String name) {
