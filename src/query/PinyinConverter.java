@@ -1,4 +1,4 @@
-package Ele;
+package query;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -18,7 +18,7 @@ import java.util.Set;
  * @author wck
  *
  */
-public class PinyinConverter {
+class PinyinConverter {
 	/**
 	 * 返回所有可能的缩写 （因为有多音字，所以有可能有多种缩写）
 	 * @param name "黄骏"
