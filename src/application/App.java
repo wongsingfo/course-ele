@@ -12,7 +12,19 @@ import javafx.stage.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 
-public class Main extends Application {
+/**
+ * JavaFX基本理解：
+ * <p>
+ * 一个窗口是一个Stage，窗口的内容是Scene
+ * <p>
+ * 一个fxml文件描述一个Scene，并且关联了一个Controller
+ * <p>
+ * Controller响应用户的操作
+ * 
+ * 
+ *
+ */
+public class App extends Application {
 	private double xoffset = 0;
 	private double yoffset = 0;
  	@Override

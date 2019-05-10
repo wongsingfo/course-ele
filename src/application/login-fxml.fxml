@@ -9,7 +9,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" style="-fx-background-color: rgba(0,100,0,0);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.loginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" style="-fx-background-color: rgba(0,100,0,0);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginController">
    <children>
       <AnchorPane layoutY="42.0" prefHeight="438.0" prefWidth="960.0" style="-fx-background-color: #fff; -fx-border-radius: 5em;" stylesheets="@style.css">
          <children>
@@ -24,15 +24,19 @@
                         <Insets />
                      </opaqueInsets>
                   </PasswordField>
-                  <Button fx:id="btnlogin" blendMode="SRC_ATOP" graphicTextGap="1.0" layoutX="187.0" layoutY="291.0" mnemonicParsing="false" onAction="#btnclicks" prefHeight="42.0" prefWidth="58.0" scaleShape="false" stylesheets="@style.css">
+                  <Button fx:id="btnskip" layoutX="208.0" layoutY="288.0" mnemonicParsing="false" onAction="#btnclicks" prefHeight="42.0" prefWidth="94.0" text="Skip">
+                     <font>
+                        <Font name="Helvetica" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnlogin" blendMode="SRC_ATOP" graphicTextGap="1.0" layoutX="134.0" layoutY="288.0" mnemonicParsing="false" onAction="#btnclicks" prefHeight="42.0" prefWidth="58.0" scaleShape="false" stylesheets="@style.css">
                      <graphic>
                         <ImageView fx:id="btnenter" fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../image/登陆.png" />
                            </image>
                         </ImageView>
-                     </graphic>
-                  </Button>
+                     </graphic></Button>
                </children>
             </AnchorPane>
             <Text fill="#da2626" layoutX="33.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign in ">

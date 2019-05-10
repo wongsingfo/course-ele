@@ -15,7 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-public class loginController implements Initializable{
+public class LoginController extends Controller implements Initializable{
 
     @FXML
     private TextField txtid;
@@ -28,13 +28,23 @@ public class loginController implements Initializable{
 
     @FXML
     private Button btnlogin;
+    
+    @FXML
+    private Button btnskip;
 
     @FXML
     private PasswordField txtpass;
     
     public void btnclicks(ActionEvent event) {
-    	if(event.getSource() == btnquit) {
-    		System.exit(0);
+    	Object src = event.getSource();
+    	
+    	Stage stage = (Stage) btnlogin.getScene().getWindow();
+    	
+    	if(src == btnquit) {
+    	    stage.close();
+    	}
+    	else if (src == btnskip) {
+    		replaceSceneContent(stage, "eleGUI.fxml");
     	}
 //    	else if (event.getSource() == btnlogin) {
 //    		String id = txtid.getText();
