@@ -1,5 +1,7 @@
 /doc
 /bin
+lib/javafx.properties
+lib/*.dylib
 
 # Temp file on MacOS
 .DS_Store
