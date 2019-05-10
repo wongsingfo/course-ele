@@ -44,7 +44,7 @@ public class LoginController extends Controller implements Initializable{
     	    stage.close();
     	}
     	else if (src == btnskip) {
-    		replaceSceneContent(stage, "eleGUI.fxml");
+    		replaceSceneContent(stage, "fxml-dashboard.fxml");
     	}
 //    	else if (event.getSource() == btnlogin) {
 //    		String id = txtid.getText();

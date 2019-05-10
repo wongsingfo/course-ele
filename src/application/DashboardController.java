@@ -11,7 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class MainController extends Controller implements Initializable{
+public class DashboardController extends Controller implements Initializable{
 
     @FXML
     private Button btncalendar;
@@ -27,13 +27,13 @@ public class MainController extends Controller implements Initializable{
     
     public void btnclick(ActionEvent mouseEvent) {
 		if(mouseEvent.getSource() == btncalendar) {
-			//new FXMLLoader(getClass().getResource(""));
+			createStage("fxml-timetable.fxml");
 		}
 		else if (mouseEvent.getSource() == btnfavorite) {
-			//new FXMLLoader(getClass().getResource(""));
+			createStage("fxml-favorite.fxml");
 		}
 		else if(mouseEvent.getSource() == btncourses) {
-			createStage("courseinfo.fxml");
+			createStage("fxml-courseinfo.fxml");
 		}
 	}
 	@Override
