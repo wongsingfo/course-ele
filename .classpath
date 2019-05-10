@@ -8,6 +8,14 @@
 	<classpathentry kind="lib" path="lib/client-combined-3.141.59-sources.jar"/>
 	<classpathentry kind="lib" path="lib/client-combined-3.141.59.jar"/>
 	<classpathentry kind="lib" path="lib/guava-25.0-jre.jar"/>
+	<classpathentry kind="lib" path="lib/javafx-swt.jar"/>
+	<classpathentry kind="lib" path="lib/javafx.base.jar"/>
+	<classpathentry kind="lib" path="lib/javafx.controls.jar"/>
+	<classpathentry kind="lib" path="lib/javafx.fxml.jar"/>
+	<classpathentry kind="lib" path="lib/javafx.graphics.jar"/>
+	<classpathentry kind="lib" path="lib/javafx.media.jar"/>
+	<classpathentry kind="lib" path="lib/javafx.swing.jar"/>
+	<classpathentry kind="lib" path="lib/javafx.web.jar"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -536,7 +536,7 @@ public class Scrapy_elective {
 	}
 	public static void main(String[] args) {
 		
-		WebDriver driver = log_in("1700012862","SHt991122");
+		WebDriver driver = log_in("17000*****","888888");
 		 
 		List<WebElement> menu = get_menu(driver);
 		//get_elective_plan(driver,menu);

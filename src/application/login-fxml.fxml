@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" style="-fx-background-color: rgba(0,100,0,0);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.loginController">
+   <children>
+      <AnchorPane layoutY="42.0" prefHeight="438.0" prefWidth="960.0" style="-fx-background-color: #fff; -fx-border-radius: 5em;" stylesheets="@style.css">
+         <children>
+            <AnchorPane layoutX="525.0" prefHeight="468.0" prefWidth="435.0" style="-fx-background-color: #fff;" styleClass="style.css">
+               <children>
+                  <TextField id="txtid" fx:id="txtid" layoutX="87.0" layoutY="163.0" prefHeight="27.0" prefWidth="249.0" promptText="StudentID " />
+                  <PasswordField id="txtpassword" fx:id="txtpass" layoutX="87.0" layoutY="222.0" prefHeight="27.0" prefWidth="249.0" promptText="password">
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </PasswordField>
+                  <Button fx:id="btnlogin" blendMode="SRC_ATOP" graphicTextGap="1.0" layoutX="187.0" layoutY="291.0" mnemonicParsing="false" onAction="#btnclicks" prefHeight="42.0" prefWidth="58.0" scaleShape="false" stylesheets="@style.css">
+                     <graphic>
+                        <ImageView fx:id="btnenter" fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../image/登陆.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <Text fill="#da2626" layoutX="33.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign in ">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <Button fx:id="btnquit" layoutX="-1.0" layoutY="187.0" mnemonicParsing="false" onAction="#btnclicks" prefHeight="38.0" prefWidth="138.0" stylesheets="@style.css" text="Quit" textFill="#da2626">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="136.0" prefHeight="544.0" prefWidth="408.0" style="-fx-background-color: #dd3e47; -fx-border-radius: 5em;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="137.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../image/北京大学%20(3).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="99.0" fitWidth="314.0" layoutX="55.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../image/1557370261_559693.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
