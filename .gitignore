@@ -1,6 +1,6 @@
 /doc
 /bin
-lib/javafx.properties
+lib/javafx*
 lib/*.dylib
 
 # Temp file on MacOS
