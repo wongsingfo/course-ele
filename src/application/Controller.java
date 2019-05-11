@@ -26,6 +26,7 @@ public abstract class Controller implements Initializable {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
+		stage.setResizable(false);
 		stage.sizeToScene();
 		stage.show();
 	}
