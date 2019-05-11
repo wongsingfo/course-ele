@@ -1,6 +1,6 @@
 .button
 {
--fx-background-color : #F3F3F3;
+	-fx-background-color : #F3F3F3;
 }
 .button:hover
 {
@@ -9,4 +9,8 @@
 .button:pressed
 {
 	-fx-background-color : #c6050f;
+}
+
+.pku-red {
+	-fx-background-color:  #dd3e47;
 }

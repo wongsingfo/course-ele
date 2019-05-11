@@ -11,14 +11,14 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DashboardController">
    <children>
-      <Pane layoutY="-10.0" prefHeight="196.0" prefWidth="960.0" style="-fx-background-color: #dd3e47;">
+      <Pane layoutY="-10.0" prefHeight="196.0" prefWidth="960.0" styleClass="pku-red" stylesheets="@style.css">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="97.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../image/北京大学%20(3).png" />
                </image>
             </ImageView>
-            <Label layoutX="571.0" layoutY="106.0" prefHeight="55.0" prefWidth="363.0" text="海淀gam*le，一直du一直爽" textAlignment="CENTER" textFill="#f5f0f0">
+            <Label layoutX="809.0" layoutY="113.0" prefHeight="55.0" prefWidth="107.0" text="海淀" textAlignment="CENTER" textFill="#f5f0f0">
                <font>
                   <Font name="Helvetica Bold" size="31.0" />
                </font>
@@ -33,49 +33,45 @@
       </Pane>
       <AnchorPane layoutX="69.0" layoutY="245.0" prefHeight="298.0" prefWidth="817.0">
          <children>
-            <Pane layoutX="121.0" layoutY="73.0" prefHeight="228.0" prefWidth="633.0">
+            <GridPane hgap="10.0" prefHeight="196.0" prefWidth="633.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="122.0" AnchorPane.rightAnchor="122.0" AnchorPane.topAnchor="50.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
                <children>
-                  <GridPane hgap="10.0" prefHeight="196.0" prefWidth="633.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="122.0" AnchorPane.rightAnchor="122.0" AnchorPane.topAnchor="50.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Button fx:id="btncalendar" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnclick" prefHeight="213.0" prefWidth="211.0" stylesheets="@style.css" text="Calendar">
-                           <graphic>
-                              <ImageView fitHeight="100.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../image/课程表.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="btncourses" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnclick" prefHeight="213.0" prefWidth="211.0" stylesheets="@style.css" text="Courses" GridPane.columnIndex="2">
-                           <graphic>
-                              <ImageView fitHeight="124.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../image/计划.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="btnfavorite" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnclick" prefHeight="213.0" prefWidth="211.0" stylesheets="@style.css" text="Favorite" GridPane.columnIndex="1">
-                           <graphic>
-                              <ImageView fitHeight="108.0" fitWidth="121.0" onMouseClicked="#btnclick" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../image/wd-accent-paper-airplane.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                  </GridPane>
+                  <Button fx:id="btncalendar" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnclick" prefHeight="213.0" prefWidth="211.0" stylesheets="@style.css" text="Calendar">
+                     <graphic>
+                        <ImageView fitHeight="100.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../image/课程表.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btncourses" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnclick" prefHeight="213.0" prefWidth="211.0" stylesheets="@style.css" text="Courses" GridPane.columnIndex="2">
+                     <graphic>
+                        <ImageView fitHeight="124.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../image/计划.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnfavorite" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnclick" prefHeight="213.0" prefWidth="211.0" stylesheets="@style.css" text="Favorite" GridPane.columnIndex="1">
+                     <graphic>
+                        <ImageView fitHeight="108.0" fitWidth="121.0" onMouseClicked="#btnclick" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../image/wd-accent-paper-airplane.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
-            </Pane>
+            </GridPane>
          </children>
       </AnchorPane>
    </children>
