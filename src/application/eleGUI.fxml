@@ -11,24 +11,28 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
    <children>
-      <Pane layoutY="-10.0" prefHeight="196.0" prefWidth="960.0" style="-fx-background-color: #dd3e47;">
+      <Pane layoutY="-10.0" prefHeight="196.0" prefWidth="960.0" style="-fx-background-color: #CE3216;">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="97.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../image/北京大学%20(3).png" />
                </image>
             </ImageView>
-            <Label layoutX="571.0" layoutY="106.0" prefHeight="55.0" prefWidth="363.0" text="海淀gam*le，一直du一直爽" textAlignment="CENTER" textFill="#f5f0f0">
-               <font>
-                  <Font name="Helvetica Bold" size="31.0" />
-               </font>
-            </Label>
-            <TextField fx:id="txtquery" layoutX="700.0" layoutY="54.0" prefHeight="27.0" prefWidth="192.0" />
-            <ImageView fitHeight="41.0" fitWidth="37.0" layoutX="643.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+            <TextField fx:id="txtquery" layoutX="617.0" layoutY="64.0" prefHeight="27.0" prefWidth="192.0" />
+            <ImageView fitHeight="85.0" fitWidth="502.0" layoutX="429.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../image/chaxun.png" />
+                  <Image url="@../../image/1557508362_672242.png" />
                </image>
             </ImageView>
+            <Button fx:id="btnquery" layoutX="821.0" layoutY="54.0" mnemonicParsing="false" onAction="#btnclick" stylesheets="@style2.css">
+               <graphic>
+                  <ImageView fitHeight="41.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../image/chaxun.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </Pane>
       <AnchorPane layoutX="69.0" layoutY="245.0" prefHeight="298.0" prefWidth="817.0">
@@ -45,7 +49,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="btncalendar" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnclick" prefHeight="213.0" prefWidth="211.0" stylesheets="@style.css" text="Calendar">
+                        <Button fx:id="btncalendar" contentDisplay="TOP" mnemonicParsing="false" onAction="#btnclick" prefHeight="213.0" prefWidth="211.0" stylesheets="@style.css" text="timetable">
                            <graphic>
                               <ImageView fitHeight="100.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
