@@ -22,6 +22,14 @@ public class CourseQuery {
 	List<Class> classlist = null;
 	
 	/**
+	 * 得到所有的课程
+	 * @return 返回所有的课程
+	 */
+	public List<Class> getAllClasses() {
+		return classlist;
+	}
+	
+	/**
 	 * 读入csv格式的课程数据
 	 * @param path 课程数据路径
 	 */
@@ -74,5 +82,21 @@ public class CourseQuery {
 	public static void main(String[] args)  {
 //		testPinyinConverter();
 //		test();
+		testInterval();
+	}
+
+	/**
+	 * 测试时间解析是否正确，将打印类似如下的结果：
+	 * <p>
+	 * {@code both周3:3->4
+	 * odd周1:1->2}
+	 * 
+	 */
+	private static void testInterval() {
+		CourseQuery courseQuery = new CourseQuery("data/1.csv");
+		Class c = courseQuery.getAllClasses().get(0);
+		for (Interval i : c.getIntervals()) {
+			System.out.println(i);
+		}
 	}
 }

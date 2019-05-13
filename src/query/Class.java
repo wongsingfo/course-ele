@@ -1,5 +1,7 @@
 package query;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,6 +14,25 @@ public class Class implements Comparable<Class> {
 	public int [] weight = {10,8,5,2,5,1,1,1,3,5,5,2};
 	public String [] regex = new String[12];
 	public int score;
+	
+	/**
+	 * 从@{Class.info}中解析上课时间
+	 * @return 上课时间
+	 */
+	public List<Interval> getIntervals() {
+		List<Interval> r = new LinkedList<Interval>();
+		Pattern p = Pattern.compile("(?<which>.)周周(?<day>.)(?<from>\\d+)~(?<to>\\d+)节");
+		Matcher m = p.matcher(info);
+		while (m.find()) {
+			Interval i = new Interval(
+					m.group("which"),
+					m.group("day"),
+					m.group("from"),
+					m.group("to"));
+			r.add(i);
+		}
+		return r;
+	}
 	
 	public Class(String s) {
 		info = s;
