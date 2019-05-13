@@ -40,7 +40,7 @@ public class App extends Application {
 				xoffset = event.getSceneX();
 				yoffset = event.getSceneY();
 			}
-		});
+		}); 
 		root.setOnMouseDragged(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {

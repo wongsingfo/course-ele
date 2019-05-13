@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.io.*;
+import java.text.Format;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -42,7 +44,7 @@ public class Scrapy_elective {
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		String html = driver.getPageSource();
 		try {
-			String file_name = "/Users/mac/Desktop/19春/java/data.csv";
+			String file_name = "data/data.csv";
 			File data_reserve = new File(file_name);
 			BufferedWriter bw = new BufferedWriter(new FileWriter(data_reserve,false));
 			bw.write('\ufeff');
@@ -85,7 +87,7 @@ public class Scrapy_elective {
 		driver.findElement(By.xpath("//table//form[@id='qyForm']//input[@id='b_query']")).click();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		try {
-			String filename = "/Users/mac/Desktop/19春/java/speciality_data.csv";
+			String filename = "data/speciality_data.csv";
 			File data_reserve = new File(filename);
 			BufferedWriter bw = new BufferedWriter(new FileWriter(data_reserve,false));
 			bw.write('\ufeff');
@@ -139,7 +141,7 @@ public class Scrapy_elective {
 		driver.findElement(By.xpath("//table//form[@id='qyForm']//input[@id='b_query']")).click();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		try {
-			String filename = "/Users/mac/Desktop/19春/java/trans_choice_data.csv";
+			String filename = "data/trans_choice_data.csv";
 			File data_reserve = new File(filename);
 			BufferedWriter bw = new BufferedWriter(new FileWriter(data_reserve,false));
 			bw.write('\ufeff');
@@ -193,7 +195,7 @@ public class Scrapy_elective {
 		driver.findElement(By.xpath("//table//form[@id='qyForm']//input[@id='b_query']")).click();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		try {
-			String filename = "/Users/mac/Desktop/19春/java/pub_choice_data.csv";
+			String filename = "data/pub_choice_data.csv";
 			File data_reserve = new File(filename);
 			BufferedWriter bw = new BufferedWriter(new FileWriter(data_reserve,false));
 			bw.write('\ufeff');
@@ -244,7 +246,7 @@ public class Scrapy_elective {
 		driver.findElement(By.xpath("//table//form[@id='qyForm']//input[@id='b_query']")).click();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		try {
-			String filename = "/Users/mac/Desktop/19春/java/politics_data.csv";
+			String filename = "data/politics_data.csv";
 			File data_reserve = new File(filename);
 			BufferedWriter bw = new BufferedWriter(new FileWriter(data_reserve,false));
 			bw.write('\ufeff');
@@ -295,7 +297,7 @@ public class Scrapy_elective {
 		driver.findElement(By.xpath("//table//form[@id='qyForm']//input[@id='b_query']")).click();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		try {
-			String filename = "/Users/mac/Desktop/19春/java/gym_data.csv";
+			String filename = "data/gym_data.csv";
 			File data_reserve = new File(filename);
 			BufferedWriter bw = new BufferedWriter(new FileWriter(data_reserve,false));
 			bw.write('\ufeff');
@@ -346,7 +348,7 @@ public class Scrapy_elective {
 		driver.findElement(By.xpath("//table//form[@id='qyForm']//input[@id='b_query']")).click();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		try {
-			String filename = "/Users/mac/Desktop/19春/java/liberal_computer_data.csv";
+			String filename = "data/liberal_computer_data.csv";
 			File data_reserve = new File(filename);
 			BufferedWriter bw = new BufferedWriter(new FileWriter(data_reserve,false));
 			bw.write('\ufeff');
@@ -397,7 +399,7 @@ public class Scrapy_elective {
 		driver.findElement(By.xpath("//table//form[@id='qyForm']//input[@id='b_query']")).click();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		try {
-			String filename = "/Users/mac/Desktop/19春/java/english_data.csv";
+			String filename = "data/english_data.csv";
 			File data_reserve = new File(filename);
 			BufferedWriter bw = new BufferedWriter(new FileWriter(data_reserve,false));
 			bw.write('\ufeff');
@@ -450,7 +452,7 @@ public class Scrapy_elective {
 		driver.findElement(By.xpath("//table//form[@id='qyForm']//input[@id='b_query']")).click();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		try {
-			String filename = "/Users/mac/Desktop/19春/java/ele_plan_data.csv";
+			String filename = "data/ele_plan_data.csv";
 			File data_reserve = new File(filename);
 			BufferedWriter bw = new BufferedWriter(new FileWriter(data_reserve,false));
 			bw.write('\ufeff');
@@ -534,8 +536,43 @@ public class Scrapy_elective {
 		}
 		return result;
 	}
-	public static void main(String[] args) {
+	public static void getData(String id,String password) {
+		WebDriver driver = Scrapy_elective.log_in(id, password);
+		List<WebElement> menu = Scrapy_elective.get_menu(driver);
+		//get_elective_plan(driver,menu);
+		Scrapy_elective.add_course_speciality(driver,menu);
+		Scrapy_elective.add_course_trans_choice(driver,Scrapy_elective.get_menu(driver));
+		Scrapy_elective.add_course_pub_choice(driver,Scrapy_elective.get_menu(driver));
+		Scrapy_elective.add_course_politics(driver,Scrapy_elective.get_menu(driver));
+		Scrapy_elective.add_course_gym(driver,Scrapy_elective.get_menu(driver));
+		Scrapy_elective.add_course_liberal_computer(driver,Scrapy_elective.get_menu(driver));
+		Scrapy_elective.add_course_english(driver,Scrapy_elective.get_menu(driver));
+		Scrapy_elective.add_course_plan(driver,Scrapy_elective.get_menu(driver));
 		
+		List<elec_result>result = Scrapy_elective.get_elec_result(driver,Scrapy_elective.get_menu(driver));
+		// test result
+		try {
+			String filename = "data/ele_result.csv";
+			File data_reserve = new File(filename);
+			BufferedWriter bw = new BufferedWriter(new FileWriter(data_reserve,false));
+			bw.write('\ufeff');
+			bw.newLine();
+			bw.write("row,column,name,classroom,other_info");
+			for(elec_result i:result) {
+				bw.newLine();
+				bw.write(String.format("%s,%s,%s,%s,%s %s",i.row,i.column,i.name,i.classroom,i.week_form,i.exam));
+				System.out.printf("row is %d and column is %d\n name is %s and classroom is %s\n other_info is %s and %s\n",i.row,i.column,i.name,i.classroom,i.week_form,i.exam);
+			}
+			bw.close();
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.getStackTrace();
+		}
+		
+		driver.quit();
+	}
+	public static void main(String[] args) {
+	
 		WebDriver driver = log_in("17000*****","888888");
 		 
 		List<WebElement> menu = get_menu(driver);
@@ -549,12 +586,24 @@ public class Scrapy_elective {
 		add_course_english(driver,get_menu(driver));
 		add_course_plan(driver,get_menu(driver));
 		
-		//List<elec_result>result = get_elec_result(driver,menu);
+		List<elec_result>result = get_elec_result(driver,menu);
 		// test result
-		
-//		for(elec_result i:result) {
-//			System.out.printf("row is %d and column is %d\n name is %s and classroom is %s\n other_info is %s and %s\n",i.row,i.column,i.name,i.classroom,i.week_form,i.exam);
-//		}
+		try {
+			String filename = "/Users/mac/Desktop/19春/java/ele_result.csv";
+			File data_reserve = new File(filename);
+			BufferedWriter bw = new BufferedWriter(new FileWriter(data_reserve,false));
+			bw.write('\ufeff');
+			bw.newLine();
+			bw.write("row,column,name,classroom,other_info");
+			for(elec_result i:result) {
+				bw.newLine();
+				bw.write(String.format("%s,%s,%s,%s,%s %s",i.row,i.column,i.name,i.classroom,i.week_form,i.exam));
+				System.out.printf("row is %d and column is %d\n name is %s and classroom is %s\n other_info is %s and %s\n",i.row,i.column,i.name,i.classroom,i.week_form,i.exam);
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.getStackTrace();
+		}
 		
 		try{
 			Thread.sleep(1000 * 10);

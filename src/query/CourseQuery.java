@@ -11,19 +11,12 @@ import java.util.*;
  * 
  */
 public class CourseQuery {
-	static void test() {
+	public static void test(String string) {
 		CourseQuery courseQuery = new CourseQuery("data/1.csv");
-		
-		Scanner in = new Scanner(System.in);
-	    
-	    while (in.hasNext()) {
-	    	String s = in.nextLine();
-	    	List<Class> r = courseQuery.match(s, 5);
-	    	for (Class c : r) {
-	    		System.out.println(c);
-	    	}
-		}
-	    in.close();
+	    List<Class> r = courseQuery.match(string, 5);
+	    for (Class c : r) {
+	    	System.out.println(c);
+	   	}
 	}
 
 	List<Class> classlist = null;
@@ -75,11 +68,11 @@ public class CourseQuery {
 //		System.out.println(Integer.parseInt("90ED",16));
 //		System.out.println((int) '郭');
 		List<String> a = pc.getAbbr("黄骏");
-		for (String r : a) System.out.println(r);
+		//for (String r : a) System.out.println(r);
 	}
 	
 	public static void main(String[] args)  {
 //		testPinyinConverter();
-		test();
+//		test();
 	}
 }

@@ -15,8 +15,8 @@
          <children>
             <AnchorPane layoutX="525.0" prefHeight="468.0" prefWidth="435.0" style="-fx-background-color: #fff;" styleClass="style.css">
                <children>
-                  <TextField id="txtid" fx:id="txtid" layoutX="87.0" layoutY="163.0" prefHeight="27.0" prefWidth="249.0" promptText="StudentID " />
-                  <PasswordField id="txtpassword" fx:id="txtpass" layoutX="87.0" layoutY="222.0" prefHeight="27.0" prefWidth="249.0" promptText="password">
+                  <TextField id="txtid" fx:id="txtid" layoutX="87.0" layoutY="136.0" prefHeight="27.0" prefWidth="249.0" promptText="StudentID " />
+                  <PasswordField id="txtpassword" fx:id="txtpass" layoutX="87.0" layoutY="195.0" prefHeight="27.0" prefWidth="249.0" promptText="password">
                      <cursor>
                         <Cursor fx:constant="TEXT" />
                      </cursor>
@@ -24,19 +24,30 @@
                         <Insets />
                      </opaqueInsets>
                   </PasswordField>
-                  <Button fx:id="btnskip" layoutX="208.0" layoutY="288.0" mnemonicParsing="false" onAction="#btnclicks" prefHeight="42.0" prefWidth="94.0" text="Skip">
-                     <font>
-                        <Font name="Helvetica" size="20.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btnlogin" blendMode="SRC_ATOP" graphicTextGap="1.0" layoutX="134.0" layoutY="288.0" mnemonicParsing="false" onAction="#btnclicks" prefHeight="42.0" prefWidth="58.0" scaleShape="false" stylesheets="@style.css">
+                  <Button fx:id="btnlogin" blendMode="SRC_ATOP" graphicTextGap="1.0" layoutX="191.0" layoutY="257.0" mnemonicParsing="false" onAction="#btnclicks" prefHeight="46.0" prefWidth="44.0" scaleShape="false" stylesheets="@style.css">
                      <graphic>
                         <ImageView fx:id="btnenter" fitHeight="37.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../image/登陆.png" />
                            </image>
                         </ImageView>
-                     </graphic></Button>
+                     </graphic>
+                  </Button>
+                  <ProgressIndicator fx:id="prolog" layoutX="201.0" layoutY="291.0" prefHeight="46.0" prefWidth="44.0" visible="false" />
+                  <Button fx:id="btnoffli" contentDisplay="TOP" layoutX="342.0" layoutY="371.0" mnemonicParsing="false" onAction="#btnclicks" prefHeight="55.0" prefWidth="44.0" stylesheets="@style.css">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../image/本地.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <ImageView fitHeight="22.0" fitWidth="249.0" layoutX="93.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../image/1557506509_896028.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
             <Text fill="#da2626" layoutX="33.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign in ">
@@ -51,7 +62,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="136.0" prefHeight="544.0" prefWidth="408.0" style="-fx-background-color: #dd3e47; -fx-border-radius: 5em;">
+      <AnchorPane layoutX="136.0" prefHeight="544.0" prefWidth="408.0" style="-fx-background-color: #CE3216; -fx-border-radius: 5em;">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="137.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
                <image>
