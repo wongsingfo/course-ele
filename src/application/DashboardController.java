@@ -25,41 +25,28 @@ public class DashboardController extends Controller implements Initializable{
     @FXML
     private Button btncourses;
     
-    @FXML
+    @FXML			
     private Button btnquery;
 
     @FXML
     private TextField txtquery;
     
     public void btnclick(ActionEvent mouseEvent) {
+    	Stage stage = (Stage)btnquery.getScene().getWindow();
+    	
 		if(mouseEvent.getSource() == btncalendar) {
-			createStage("fxml-timetable.fxml");
+			replaceSceneContent(stage, "fxml-timetable.fxml");
 		}
 		else if (mouseEvent.getSource() == btnfavorite) {
-			createStage("fxml-favorite.fxml");
+			replaceSceneContent(stage, "fxml-favorite.fxml");
 		}
 		else if(mouseEvent.getSource() == btncourses) {
-			Stage stage = (Stage)btnquery.getScene().getWindow();
-			try {
-				stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Courseinfo.fxml")),960,600));
-				
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			replaceSceneContent(stage, "fxml-courseinfo.fxml");
 		}
 		else if(mouseEvent.getSource() == btnquery) {
 			String text = txtquery.getText();
 			//CourseQuery.test(text);
-			Stage stage = (Stage)btnquery.getScene().getWindow();
-			try {
-				stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("Queryinfo.fxml")),960,600));
-				
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
+			replaceSceneContent(stage, "fxml-query.fxml");
 		}
 	}
 	@Override

@@ -19,7 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-public class QueryController implements Initializable{
+public class QueryController extends Controller implements Initializable{
 
 	@FXML
     private Button btnback;
@@ -63,29 +63,22 @@ public class QueryController implements Initializable{
     public void btnclicks(ActionEvent event) {
     	Stage stage = (Stage)btnback.getScene().getWindow();
     	if(event.getSource() == btnback) {
-    		LoadScene(stage, "eleGUI.fxml");
+    		replaceSceneContent(stage, "fxml-dashboard.fxml");
     	}
     	else if(event.getSource() == btnquery) {
     		
     	}
     	else if(event.getSource() == btncourse) {
-    		LoadScene(stage, "Courseinfo.fxml");
+    		replaceSceneContent(stage, "fxml-course.fxml");
     	}
     	else if(event.getSource() == btnfavorite) {
-    		LoadScene(stage, "Favoriteinfo.fxml");
+    		replaceSceneContent(stage, "fxml-favorite.fxml");
     	}
     	else if(event.getSource() == btntimetable) {
-    		LoadScene(stage, "Timetable.fxml");
+    		replaceSceneContent(stage, "fxml-timetable.fxml");
     	}
     }
-    public void LoadScene(Stage stage,String fxml) {
-    	try {
-    		stage.setScene(new Scene(FXMLLoader.load(getClass().getResource(fxml)),960,600));
-    	}catch (Exception e) {
-			// TODO: handle exception
-    		e.printStackTrace();
-		}
-    }
+    
     public void Loaddata(String query) {
     	data.clear();
     	//need query result

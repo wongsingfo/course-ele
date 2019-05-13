@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 import query.*;
 
 
-public class CourseController implements Initializable{
+public class CourseController extends Controller implements Initializable{
 
     @FXML
     private Button btnback;
@@ -68,31 +68,23 @@ public class CourseController implements Initializable{
     public void btn_Clicks(ActionEvent event) {
     	Stage stage = (Stage)btnback.getScene().getWindow();
     	if(event.getSource() == btnback) {
-    		LoadScene(stage, "eleGUI.fxml");
+    		replaceSceneContent(stage, "fxml-dashboard.fxml");
     	}
     	else if(event.getSource() == btnquery) {
-    		LoadScene(stage, "Queryinfo.fxml");
+    		replaceSceneContent(stage, "fxml-query.fxml");
     	}
     	else if(event.getSource() == btncourse) {
-    		LoadScene(stage, "Courseinfo.fxml");
+    		replaceSceneContent(stage, "fxml-courseinfo.fxml");
     	}
     	else if(event.getSource() == btnfavorite) {
     		//LoadScene(stage, "Favoriteinfo.fxml");
     	}
     	else if(event.getSource() == btntimetable) {
-    		LoadScene(stage, "Timetable.fxml");
+    		replaceSceneContent(stage, "fxml-timetable.fxml");
     	}
     }
-    public void LoadScene(Stage stage,String fxml) {
-    	try {
-    		stage.setScene(new Scene(FXMLLoader.load(getClass().getResource(fxml)),960,600));
-    	}catch (Exception e) {
-			// TODO: handle exception
-    		e.printStackTrace();
-		}
-    }
     
-    public void Loaddata(String filename) {
+    public void loaddata(String filename) {
     	data.clear();
     	try {
     		BufferedReader reader = new BufferedReader(new FileReader(filename));
@@ -121,32 +113,32 @@ public class CourseController implements Initializable{
     			("培养计划","专业课","政治课","英语课","体育课","通选课","公选课","文计");
     	choicetype.setItems(choice);
     	choicetype.setValue("培养计划");
-    	Loaddata("data/ele_plan_data.csv");
+    	loaddata("data/ele_plan_data.csv");
     	choicetype.getSelectionModel().selectedItemProperty().
     	addListener((ObservableValue<? extends String> value,String oldone,String newone)->{
     		if(newone == "培养计划") {
-    			Loaddata("data/ele_plan_data.csv");
+    			loaddata("data/ele_plan_data.csv");
     		}
     		else if(newone == "专业课") {
-    			Loaddata("data/speciality_data.csv");
+    			loaddata("data/speciality_data.csv");
     		}
     		else if(newone == "政治课") {
-    			Loaddata("data/politics_data.csv");
+    			loaddata("data/politics_data.csv");
     		}
     		else if(newone == "体育课") {
-    			Loaddata("data/gym_data.csv");
+    			loaddata("data/gym_data.csv");
     		}
     		else if (newone == "英语课") {
-    			Loaddata("data/english_data.csv");
+    			loaddata("data/english_data.csv");
     		}
     		else if(newone == "通选课") {
-    			Loaddata("data/trans_choice_data.csv");
+    			loaddata("data/trans_choice_data.csv");
     		}
     		else if(newone == "公选课") {
-    			Loaddata("data/pub_choice_data.csv");
+    			loaddata("data/pub_choice_data.csv");
     		}
     		else if(newone == "文计") {
-    			Loaddata("data/liberal_computer_data.csv");
+    			loaddata("data/liberal_computer_data.csv");
     		}
     	});
     }

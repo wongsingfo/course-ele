@@ -50,16 +50,7 @@ public class LoginController extends Controller implements Initializable{
     	    stage.close();
     	}
     	else if (event.getSource() == btnoffli) {
-    		try {
-				Parent root = FXMLLoader.load(getClass().getResource("eleGUI.fxml"));
-				Stage primaryStage = new Stage();
-				primaryStage.setTitle("elective");
-				primaryStage.setScene(new Scene(root,960,600));
-				primaryStage.show();
-			}catch (Exception e) {
-				// TODO: handle exception
-				e.printStackTrace();
-			}
+    		nextStage(stage, "fxml-dashboard.fxml");
     	}
     	else if (event.getSource() == btnlogin) {
     		btnlogin.setVisible(false);
@@ -71,19 +62,8 @@ public class LoginController extends Controller implements Initializable{
     	    	Scrapy_elective.getData(id, password);
     	    	prolog.setVisible(false);
     			btnlogin.setVisible(true);
-    			try {
-    				Parent root = FXMLLoader.load(getClass().getResource("eleGUI.fxml"));
-    				Stage primaryStage = new Stage();
-    				primaryStage.setTitle("elective");
-    				primaryStage.setScene(new Scene(root,960,600));
-    				primaryStage.show();
-    			}catch (Exception e) {
-    				// TODO: handle exception
-    				e.printStackTrace();
-    			}
-				//future.get();
+    			nextStage(stage, "fxml-dashboard.fxml");
     		}catch (Exception e) {
-				// TODO: handle exception
     			Alert error = new Alert(AlertType.ERROR,"用户名或密码错误\n请重新输入");
     			error.setHeaderText("login error");
     			error.showAndWait();
