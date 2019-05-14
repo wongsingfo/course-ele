@@ -37,8 +37,6 @@ public class Class implements Comparable<Class> {
 	public Class(String s) {
 		info = s;
 		a = s.split(",");
-		if (a.length < 2)
-			return;
 		courseID = a[0];
 		coursename = interleaveQ(a[1]);
 		type = interleaveQ(a[2]);
