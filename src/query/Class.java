@@ -37,6 +37,8 @@ public class Class implements Comparable<Class> {
 	public Class(String s) {
 		info = s;
 		a = s.split(",");
+		if (a.length < 2)
+			return;
 		courseID = a[0];
 		coursename = interleaveQ(a[1]);
 		type = interleaveQ(a[2]);
@@ -85,7 +87,6 @@ public class Class implements Comparable<Class> {
 		regex[9] = classroom;
 		regex[10] = time;
 		regex[11] = other;
-		System.out.println(other);
 	}
 	public void match(String s) {
 		score = 0;
@@ -99,9 +100,9 @@ public class Class implements Comparable<Class> {
 			while (m.find()) {
 				if (m.end() >= m.start()+1) {
 					score += weight[i] * (m.end() - m.start());
-					System.out.println(regex[i]);
-					System.out.println(m.start());
-					System.out.println(m.end());
+					//System.out.println(regex[i]);
+					//System.out.println(m.start());
+					//System.out.println(m.end());
 				}
 			}
 		}
