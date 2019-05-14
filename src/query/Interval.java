@@ -92,6 +92,9 @@ public class Interval {
 	public int getTo() {
 		return to;
 	}
+	public int getSpan() {
+		return to - from + 1;
+	}
 	
 	@Override
 	public String toString() {

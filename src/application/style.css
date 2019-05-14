@@ -14,3 +14,23 @@
 .pku-red {
 	-fx-background-color:  #CE3216;
 }
+
+.course-block
+{
+	-fx-background-color : #F8C3CD;
+	-fx-background-radius: 7;
+}
+.course-block:hover
+{
+	-fx-background-color : #dbb8ba;
+}
+.course-block:pressed
+{
+	-fx-background-color : #c6050f;
+}
+
+.table-grid 
+{
+	/* -fx-background-color: white; 
+	-fx-grid-lines-visible: true;*/
+}
