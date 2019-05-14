@@ -25,9 +25,13 @@ public class CourseQuery {
 	 * 得到所有的课程
 	 * @return 返回所有的课程
 	 */
-	public List<Class> getAllClasses() {
-		return classlist;
-	}
+//	public List<Class> getAllClasses() {
+//		for (Class cla : classlist)
+//		{
+//			System.out.print(cla);
+//		}
+//		return classlist;
+//	}
 	
 	/**
 	 * 读入csv格式的课程数据
@@ -44,6 +48,8 @@ public class CourseQuery {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		//System.out.println(classlist.size());
+		//this.getAllClasses();
 	}
 	
 	public List<Class> match(String pattern, int num) {
@@ -64,9 +70,12 @@ public class CourseQuery {
 	public static List<Class> parseCsv(String path) throws Exception {
 		List<Class> l = new ArrayList<Class>();
 		try {
-			InputStreamReader isr = new InputStreamReader(new FileInputStream(path), "UTF-8");
-			BufferedReader br = new BufferedReader(isr);
+			//System.out.println(path);
+			BufferedReader br = new BufferedReader(new FileReader(path));
+			//BufferedReader br = new BufferedReader(new FileInputStream(path));
 			String line = "";
+			br.readLine();
+			br.readLine();
 			while ((line = br.readLine()) != null) {
 				if (! line.isBlank()) {
 					String[] a = line.split(",");
@@ -101,11 +110,11 @@ public class CourseQuery {
 	 * odd周1:1->2}
 	 * 
 	 */
-	private static void testInterval() {
-		CourseQuery courseQuery = new CourseQuery();
-		Class c = courseQuery.getAllClasses().get(0);
-		for (Interval i : c.getIntervals()) {
-			System.out.println(i);
-		}
-	}
+//	private static void testInterval() {
+//		CourseQuery courseQuery = new CourseQuery();
+//		Class c = courseQuery.getAllClasses().get(0);
+//		for (Interval i : c.getIntervals()) {
+//			System.out.println(i);
+//		}
+//	}
 }

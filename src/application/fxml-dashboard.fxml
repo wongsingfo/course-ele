@@ -18,7 +18,6 @@
                   <Image url="@../../image/北京大学%20(3).png" />
                </image>
             </ImageView>
-            <TextField fx:id="txtquery" layoutX="617.0" layoutY="64.0" prefHeight="27.0" prefWidth="192.0" />
             <ImageView fitHeight="85.0" fitWidth="502.0" layoutX="429.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../image/1557508362_672242.png" />

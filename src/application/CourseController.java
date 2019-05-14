@@ -39,8 +39,6 @@ public class CourseController extends Controller implements Initializable{
     @FXML
     private Button btncourse;
 
-    @FXML
-    private TextField txtquery;
 
     @FXML
     private TableView<CourseProperty> table;

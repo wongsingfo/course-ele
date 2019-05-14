@@ -13,8 +13,7 @@
          <children>
             <Pane layoutX="1.0" layoutY="84.0" prefHeight="196.0" prefWidth="975.0" style="-fx-background-color: #CE3216;">
                <children>
-                  <TextField fx:id="txtquery" layoutX="671.0" layoutY="93.0" prefHeight="27.0" prefWidth="192.0" />
-                  <Button fx:id="btnquery" layoutX="877.0" layoutY="83.0" mnemonicParsing="false" onAction="#btn_Clicks" stylesheets="@style2.css">
+                  <Button fx:id="btnquery" layoutX="797.0" layoutY="83.0" mnemonicParsing="false" onAction="#btn_Clicks" stylesheets="@style2.css">
                      <graphic>
                         <ImageView fitHeight="41.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                            <image>

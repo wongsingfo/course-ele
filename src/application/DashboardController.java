@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,8 +12,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import query.*;
+import query.Class;
 
 public class DashboardController extends Controller implements Initializable{
 
@@ -28,8 +31,6 @@ public class DashboardController extends Controller implements Initializable{
     @FXML			
     private Button btnquery;
 
-    @FXML
-    private TextField txtquery;
     
     public void btnclick(ActionEvent mouseEvent) {
     	Stage stage = (Stage)btnquery.getScene().getWindow();
@@ -44,11 +45,13 @@ public class DashboardController extends Controller implements Initializable{
 			replaceSceneContent(stage, "fxml-courseinfo.fxml");
 		}
 		else if(mouseEvent.getSource() == btnquery) {
-			String text = txtquery.getText();
-			//CourseQuery.test(text);
 			replaceSceneContent(stage, "fxml-query.fxml");
+			
 		}
 	}
+    private CourseQuery cq = null;
+    
+    
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub

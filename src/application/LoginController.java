@@ -48,9 +48,10 @@ public class LoginController extends Controller implements Initializable{
     	
     	if(src == btnquit) {
     	    stage.close();
+    	    System.exit(0);
     	}
     	else if (event.getSource() == btnoffli) {
-    		nextStage(stage, "fxml-dashboard.fxml");
+    		createStage("fxml-dashboard.fxml");
     	}
     	else if (event.getSource() == btnlogin) {
     		btnlogin.setVisible(false);
