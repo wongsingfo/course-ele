@@ -64,7 +64,8 @@ public class CourseQuery {
 	public static List<Class> parseCsv(String path) throws Exception {
 		List<Class> l = new ArrayList<Class>();
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(path));
+			InputStreamReader isr = new InputStreamReader(new FileInputStream(path), "UTF-8");
+			BufferedReader br = new BufferedReader(isr);
 			String line = "";
 			while ((line = br.readLine()) != null) {
 				if (! line.isBlank()) {
