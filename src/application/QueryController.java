@@ -10,12 +10,17 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Callback;
+import application.FavoritesPaneController;
 
 public class QueryController extends Controller implements Initializable{
 
@@ -55,6 +60,10 @@ public class QueryController extends Controller implements Initializable{
     @FXML
     private TableColumn<CourseProperty, String> coltea;
     
+    @FXML
+    private TableColumn<CourseProperty, String> saveToFavorite;
+    
+    
     private ObservableList<CourseProperty> data = FXCollections.observableArrayList();
     
     public void btnclicks(ActionEvent event) {
@@ -69,7 +78,7 @@ public class QueryController extends Controller implements Initializable{
     		replaceSceneContent(stage, "fxml-course.fxml");
     	}
     	else if(event.getSource() == btnfavorite) {
-    		replaceSceneContent(stage, "fxml-favorite.fxml");
+    		replaceSceneContent(stage, "fxml-favorite.fxml");    		
     	}
     	else if(event.getSource() == btntimetable) {
     		replaceSceneContent(stage, "fxml-timetable.fxml");
@@ -92,11 +101,52 @@ public class QueryController extends Controller implements Initializable{
 			// TODO: handle exception
     		e.printStackTrace();
 		}
+    	
+    	Callback<TableColumn<CourseProperty,String> ,TableCell<CourseProperty,String>> cellFactory = 
+        		new Callback<TableColumn<CourseProperty,String> ,TableCell<CourseProperty,String>>() {
+        	
+        		@Override
+        		public TableCell<CourseProperty, String> call(final TableColumn<CourseProperty, String> param) {
+        			final TableCell<CourseProperty, String> cell = new TableCell<CourseProperty, String>() {
+        				final Button btn = new Button(" 点 击 收 藏 ");
+        				
+        				@Override
+        				public void updateItem(String item, boolean empty) {
+        					super.updateItem(item, empty);
+        					if (empty) {
+        						setGraphic(null);
+        						setText(null);
+        					}
+        					else {
+        						btn.setOnAction(event-> {
+        							CourseProperty c = getTableView().getItems().get(getIndex());
+        							Alert inform;
+        			    			if (FavoritesPaneController.isContains(c)) {
+        			    				inform = new Alert(AlertType.INFORMATION,"课程“"+c.getName()+"”已收藏，请勿重复操作。");
+        			    			}
+        			    			else {
+        			    				inform = new Alert(AlertType.INFORMATION,"课程“"+c.getName()+"”收藏成功！么么哒～");
+        			    				App.savedFavorites.add(c);
+        			    			}
+        			    			inform.setHeaderText("");
+        			    			inform.showAndWait();
+        			    			
+        						});
+        						setGraphic(btn);
+        						setText(null);
+        					}
+        				}
+        			};
+        			return cell;
+       			}
+       		};
+    	
     	colcredit.setCellValueFactory(new PropertyValueFactory<CourseProperty,String>("credit"));
     	colname.setCellValueFactory(new PropertyValueFactory<CourseProperty,String>("name"));
     	coltea.setCellValueFactory(new PropertyValueFactory<CourseProperty,String>("teacher"));
     	coldepa.setCellValueFactory(new PropertyValueFactory<CourseProperty,String>("department"));
     	colinfo.setCellValueFactory(new PropertyValueFactory<CourseProperty,String>("info"));
+    	saveToFavorite.setCellFactory(cellFactory);
     	
     	table.setItems(data);
     }

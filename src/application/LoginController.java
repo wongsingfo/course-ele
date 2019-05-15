@@ -1,5 +1,6 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import scrapy.*;
@@ -17,6 +18,7 @@ import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import application.FavoritesPaneController;
 
 public class LoginController extends Controller implements Initializable{
 
@@ -47,6 +49,12 @@ public class LoginController extends Controller implements Initializable{
     	Stage stage = (Stage) btnlogin.getScene().getWindow();
     	
     	if(src == btnquit) {
+    		try {
+				FavoritesPaneController.writeFavoriteCsv("data/favorites.csv");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+    		
     	    stage.close();
     	    System.exit(0);
     	}

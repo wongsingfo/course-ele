@@ -77,7 +77,8 @@ public class CourseQuery {
 			br.readLine();
 			br.readLine();
 			while ((line = br.readLine()) != null) {
-				if (! line.isBlank()) {
+				// if (! line.isBlank()) {
+				if (! line.isEmpty()) {
 					String[] a = line.split(",");
 					if (a.length == 0) continue;
 					l.add(new Class(line));

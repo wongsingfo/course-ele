@@ -48,7 +48,8 @@ class PinyinConverter {
 		
 		try {
 			for (String line = in.readLine(); line != null; line = in.readLine()) {
-				String[] s = line.strip().split(" ");
+				// String[] s = line.strip().split(" ");
+				String[] s = line.trim().split(" ");
 				int s0 = Integer.parseInt(s[0],16); 
 				
 				Set<Character> set = new HashSet<Character>();

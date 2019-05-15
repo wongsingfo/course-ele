@@ -3,6 +3,8 @@ package application;
 //import java.lang.ModuleLayer.Controller;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -27,7 +29,10 @@ import javafx.scene.*;
 public class App extends Application {
 	private double xoffset = 0;
 	private double yoffset = 0;
- 	@Override
+    public static boolean isFirstAccessFlag = true;
+	public static ObservableList<CourseProperty> savedFavorites = FXCollections.observableArrayList();
+
+	@Override
 	public void start(Stage primaryStage)throws Exception {
  		FXMLLoader fxml = new FXMLLoader(getClass().getResource("fxml-login.fxml"));
 		Parent root = fxml.load();

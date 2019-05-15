@@ -62,11 +62,12 @@
                <children>
                   <TableView fx:id="table" layoutX="-6.0" prefHeight="289.0" prefWidth="865.0" stylesheets="@../../bin/application/tableviewstyle.css">
                      <columns>
-                        <TableColumn fx:id="colname" prefWidth="324.0" resizable="false" text="课程名称" />
-                        <TableColumn fx:id="colcredit" prefWidth="82.0" resizable="false" text="学分" />
-                        <TableColumn fx:id="coltea" prefWidth="125.0" resizable="false" text="授课老师" />
-                        <TableColumn fx:id="coldepa" prefWidth="151.0" resizable="false" text="院系" />
-                        <TableColumn fx:id="colinfo" prefWidth="175.0" resizable="false" text="信息" />
+                        <TableColumn fx:id="colname" prefWidth="186.0" resizable="false" text="课程名称" />
+                        <TableColumn fx:id="colcredit" prefWidth="54.0" resizable="false" text="学分" />
+                        <TableColumn fx:id="coltea" prefWidth="147.0" resizable="false" text="授课老师" />
+                        <TableColumn fx:id="coldepa" prefWidth="156.0" resizable="false" text="院系" />
+                        <TableColumn fx:id="colinfo" prefWidth="221.0" resizable="false" text="信息" />
+                        <TableColumn fx:id="saveToFavorite" prefWidth="100.0" resizable="false" text="收藏课程" />
                      </columns>
                   </TableView>
                </children>

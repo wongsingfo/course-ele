@@ -13,13 +13,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.*;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import query.*;
+import application.FavoritesPaneController;
 
 
 public class CourseController extends Controller implements Initializable{
@@ -59,10 +65,14 @@ public class CourseController extends Controller implements Initializable{
     private TableColumn<CourseProperty, String> coltea;
     
     @FXML
+    private TableColumn<CourseProperty, String> saveToFavorite;
+    
+    
+    @FXML
     private ChoiceBox<String> choicetype;
     
     private ObservableList<CourseProperty> data = FXCollections.observableArrayList();
-
+    
     public void btn_Clicks(ActionEvent event) {
     	Stage stage = (Stage)btnback.getScene().getWindow();
     	if(event.getSource() == btnback) {
@@ -75,7 +85,7 @@ public class CourseController extends Controller implements Initializable{
     		replaceSceneContent(stage, "fxml-courseinfo.fxml");
     	}
     	else if(event.getSource() == btnfavorite) {
-    		//LoadScene(stage, "Favoriteinfo.fxml");
+    		replaceSceneContent(stage, "fxml-favorite.fxml");
     	}
     	else if(event.getSource() == btntimetable) {
     		replaceSceneContent(stage, "fxml-timetable.fxml");
@@ -91,18 +101,61 @@ public class CourseController extends Controller implements Initializable{
     		String line = null;
     		while((line = reader.readLine()) != null){
     			String[] item =  line.split(",");
-    			if(item.length > 9)data.add(new CourseProperty(item[1], item[3], item[4], item[6],item[9].replace("<br />", "\n")));
+    			if(item.length > 9) {
+    				data.add(new CourseProperty(item[1], item[3], item[4], item[6],item[9].replace("<br />", "\n")));
+    			}
     		}
     	}catch (Exception e) {
 			// TODO: handle exception
     		e.printStackTrace();
 		}
+    	
+    	Callback<TableColumn<CourseProperty,String> ,TableCell<CourseProperty,String>> cellFactory = 
+    		new Callback<TableColumn<CourseProperty,String> ,TableCell<CourseProperty,String>>() {
+    	
+    		@Override
+    		public TableCell<CourseProperty, String> call(final TableColumn<CourseProperty, String> param) {
+    			final TableCell<CourseProperty, String> cell = new TableCell<CourseProperty, String>() {
+    				final Button btn = new Button(" 点 击 收 藏 ");
+    				
+    				@Override
+    				public void updateItem(String item, boolean empty) {
+    					super.updateItem(item, empty);
+    					if (empty) {
+    						setGraphic(null);
+    						setText(null);
+    					}
+    					else {
+    						btn.setOnAction(event-> {
+    							CourseProperty c = getTableView().getItems().get(getIndex());
+    							Alert inform;
+    			    			if (FavoritesPaneController.isContains(c)) {
+    			    				inform = new Alert(AlertType.INFORMATION,"课程“"+c.getName()+"”已收藏，请勿重复操作。");
+    			    			}
+    			    			else {
+    			    				inform = new Alert(AlertType.INFORMATION,"课程“"+c.getName()+"”收藏成功！么么哒～");
+    			    				App.savedFavorites.add(c);
+    			    			}
+    			    			inform.setHeaderText("");
+    			    			inform.showAndWait();
+    			    			
+    						});
+    						setGraphic(btn);
+    						setText(null);
+    					}
+    				}
+    			};
+    			return cell;
+   			}
+   		};
+    	
     	colcredit.setCellValueFactory(new PropertyValueFactory<CourseProperty,String>("credit"));
     	colname.setCellValueFactory(new PropertyValueFactory<CourseProperty,String>("name"));
     	coltea.setCellValueFactory(new PropertyValueFactory<CourseProperty,String>("teacher"));
     	coldepa.setCellValueFactory(new PropertyValueFactory<CourseProperty,String>("department"));
     	colinfo.setCellValueFactory(new PropertyValueFactory<CourseProperty,String>("info"));
-    	
+    	saveToFavorite.setCellFactory(cellFactory);
+    		
     	table.setItems(data);
     }
     @Override
