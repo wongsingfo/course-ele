@@ -1,7 +1,6 @@
 package query;
 import java.io.*;
 import java.util.*;
-
 /**
  * 课程查询器
  * <p>
@@ -11,28 +10,8 @@ import java.util.*;
  * 
  */
 public class CourseQuery {
-	/*public static void test(String string) {
-		CourseQuery courseQuery = new CourseQuery("data/1.csv");
-	    List<Class> r = courseQuery.match(string, 5);
-	    for (Class c : r) {
-	    	System.out.println(c);
-	   	}
-	}*/
-
-	List<Class> classlist = new ArrayList<Class>();
-	
-	/**
-	 * 得到所有的课程
-	 * @return 返回所有的课程
-	 */
-//	public List<Class> getAllClasses() {
-//		for (Class cla : classlist)
-//		{
-//			System.out.print(cla);
-//		}
-//		return classlist;
-//	}
-	
+	public List<Class> classlist = new ArrayList<Class>();
+	public static PinyinConverter pc = new PinyinConverter();
 	/**
 	 * 读入csv格式的课程数据
 	 * @param path 课程数据路径
@@ -45,77 +24,56 @@ public class CourseQuery {
 				classlist.addAll(parseCsv("data/"+path));
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//System.out.println(classlist.size());
-		//this.getAllClasses();
 	}
-	
-	public List<Class> match(String pattern, int num) {
-		
-        for (Class c : classlist) {
-        	c.match(pattern);
-        }
+	/**
+	 * 
+	 * @param pattern 用户输入的串的内容
+	 * @return 排名后的列表
+	 * @throws Exception 
+	 */
+	public List<Class> match(String pattern){
+		try
+		{
+	        for (Class c : classlist) {
+	        	c.match(pattern);
+	        }
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
         Collections.sort(classlist);
-        
         List<Class> r = new LinkedList<Class>();
         for (Class cls : classlist) {
-        	if (cls.score == 0) break;
+        	if (cls.score < 0) break;
         	r.add(cls);
         }
         return r;
 	}
-	
-	public static List<Class> parseCsv(String path) throws Exception {
+	/**
+	 * 
+	 * @param path 需要解析的csv的路径
+	 * @return 返回这个csv中解析出来的内容
+	 * @throws Exception
+	 */
+	public static List<Class> parseCsv(String path) {
 		List<Class> l = new ArrayList<Class>();
 		try {
-			//System.out.println(path);
 			BufferedReader br = new BufferedReader(new FileReader(path));
-			//BufferedReader br = new BufferedReader(new FileInputStream(path));
+			br.readLine();
+			br.readLine();
 			String line = "";
-			br.readLine();
-			br.readLine();
 			while ((line = br.readLine()) != null) {
-				// if (! line.isBlank()) {
-				if (! line.isEmpty()) {
+					if (line.isBlank()) continue;
 					String[] a = line.split(",");
 					if (a.length == 0) continue;
-					l.add(new Class(line));
-				}
+					l.add(new Class(line,pc));
 			}
 			br.close();
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return l;
 	}
-	
-	static void testPinyinConverter() {
-		PinyinConverter pc = new PinyinConverter();
-		System.out.println(Integer.parseInt("90ED",16));
-		System.out.println((int) '郭');
-		List<String> a = pc.getAbbr("黄骏");
-		for (String r : a) System.out.println(r);
-	}
-	
-	//public static void main(String[] args)  {
-	//	testPinyinConverter();
-		//test();
-		//testInterval();
-	//}
-
-	/**
-	 * 测试时间解析是否正确，将打印类似如下的结果：
-	 * <p>
-	 * {@code both周3:3->4
-	 * odd周1:1->2}
-	 * 
-	 */
-//	private static void testInterval() {
-//		CourseQuery courseQuery = new CourseQuery();
-//		Class c = courseQuery.getAllClasses().get(0);
-//		for (Interval i : c.getIntervals()) {
-//			System.out.println(i);
-//		}
-//	}
 }
