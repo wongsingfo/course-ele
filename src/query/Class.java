@@ -188,6 +188,7 @@ public class Class implements Comparable<Class> {
 	 * @return a?b?c?d?e?
 	 */
 	private String interleaveQ(String s) {
+		s=s.toLowerCase();
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < s.length(); i++) {
 			char c = s.charAt(i);
