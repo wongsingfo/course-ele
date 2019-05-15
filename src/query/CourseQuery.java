@@ -34,6 +34,7 @@ public class CourseQuery {
 	 * @throws Exception 
 	 */
 	public List<Class> match(String pattern){
+		pattern=pattern.toLowerCase();
 		try
 		{
 	        for (Class c : classlist) {
