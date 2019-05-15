@@ -90,10 +90,9 @@ public class QueryController extends Controller implements Initializable{
     	data.clear();
     	//need query result
     	try {
-    		List<Class> ans = cq.match(query, 10);
+    		List<Class> ans = cq.match(query);
     		for (Class cls : ans) {
     			String line = cls.toString(); 
-    			//System.out.println(line);
     			String[] item =  line.split(",");
     			if(item.length > 9)data.add(new CourseProperty(item[1], item[3], item[4], item[6],item[9].replace("<br />", "\n")));
     		}
@@ -154,6 +153,5 @@ public class QueryController extends Controller implements Initializable{
     public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
     	cq = new CourseQuery();
-    	Loaddata(txtquery.getText());
 	}
 }
