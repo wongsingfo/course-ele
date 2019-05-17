@@ -29,7 +29,7 @@ public class App extends Application {
 	private double yoffset = 0;
  	@Override
 	public void start(Stage primaryStage)throws Exception {
- 		FXMLLoader fxml = new FXMLLoader(getClass().getResource("fxml-login.fxml"));
+ 		FXMLLoader fxml = new FXMLLoader(getClass().getResource("fxml-timetable.fxml"));
 		Parent root = fxml.load();
 		primaryStage.initStyle(StageStyle.TRANSPARENT);
 		primaryStage.setTitle("elective");
