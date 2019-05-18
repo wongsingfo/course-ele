@@ -17,10 +17,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import query.Class;
 import query.CourseQuery;
@@ -139,7 +141,7 @@ public class TimetableController extends Controller {
 	@FXML
 	private GridPane table;
 	
-	private void addBlock(Interval interval, String content) {
+	private void addBlock(Interval interval, String content, String hint) {
 		AnchorPane block = new AnchorPane();
 		block.getStyleClass().add("course-block");
 		
@@ -158,6 +160,11 @@ public class TimetableController extends Controller {
 		AnchorPane.setTopAnchor(label, paddingWidth);
 		AnchorPane.setLeftAnchor(label, paddingWidth);
 		block.getChildren().add(label);
+		
+		Tooltip tooltip = new Tooltip(hint);
+		tooltip.setMaxWidth(prefWidth);
+		tooltip.setWrapText(true);
+		label.setTooltip(tooltip);
 	}
 	
 	private void lalala(int x, int y, String content) {
@@ -172,6 +179,7 @@ public class TimetableController extends Controller {
 		table.getChildren().add(block);
 		
 		Label label = new Label(content);
+		label.setTextAlignment(TextAlignment.CENTER);
 		label.setMaxWidth(prefWidth - paddingWidth * 2);
 		AnchorPane.setTopAnchor(label, paddingWidth);
 		AnchorPane.setLeftAnchor(label, paddingWidth);
@@ -247,7 +255,7 @@ public class TimetableController extends Controller {
 				CourseDay tkey=oneday.getKey();
 				span tvalue=oneday.getValue();
 				addBlock(new Interval(tkey.week,tkey.day,Integer.toString(tvalue.from),Integer.toString(tvalue.to)),
-						c.name+"\n"+c.classroom+"\n"+c.other_info);
+						c.name+"\n@"+c.classroom+"\n", c.other_info);
 			}
 			
 		}
