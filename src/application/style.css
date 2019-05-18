@@ -18,7 +18,7 @@
 .course-block
 {
 	-fx-background-color : #f4e8e8;
-	-fx-background-radius: 7;
+	-fx-background-radius: 5 25 5 5;
 	-fx-background-insets: 2;
 }
 .course-block:hover
