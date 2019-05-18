@@ -6,9 +6,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,6 +33,9 @@ public class TimetableController extends Controller {
 
     @FXML
     private Button btnfavorite;
+   
+    @FXML
+    private Button btnquery;
 
     @FXML
     private Button btntimetable;
@@ -37,10 +43,15 @@ public class TimetableController extends Controller {
     @FXML
     private Button btncourse;
     
+    
+    
     public void btn_Clicks(ActionEvent event) {
     	Stage stage = (Stage)btnback.getScene().getWindow();
     	if(event.getSource() == btnback) {
     		replaceSceneContent(stage, "fxml-dashboard.fxml");
+    	}
+    	else if(event.getSource() == btnquery) {
+    		replaceSceneContent(stage, "fxml-query.fxml");
     	}
     	else if(event.getSource() == btncourse) {
     		replaceSceneContent(stage, "fxml-courseinfo.fxml");
@@ -121,7 +132,7 @@ public class TimetableController extends Controller {
 	}
 	
 	private final int prefWidth = 122;
-	private final int prefHeight = 45;
+	private final int prefHeight = 40;
 	private final double paddingWidth = 10.0;
 	private final String[] colorScheme = {"#F8C3CD", "#FEDFE1"};
 	
@@ -180,6 +191,8 @@ public class TimetableController extends Controller {
 			table.getRowConstraints().add(new RowConstraints(prefHeight));
 		}
 		
+	
+		
 		Map<String,Course> courses=new HashMap<String,Course>();
 		try {
 			
@@ -193,7 +206,6 @@ public class TimetableController extends Controller {
 					String[] s=line.split(",");
 					Course temp=courses.get(s[2]);
 					String w="单";
-					System.out.println(w + s[1] + s[0]);
 					CourseTime t=new CourseTime(w,s[1],s[0]);
 					if(courses.containsKey(s[2])){		
 						temp.time.add(t);
@@ -213,10 +225,7 @@ public class TimetableController extends Controller {
 		for(Course c:courses.values()) {
 			Map<CourseDay,span> rec=new HashMap<CourseDay,span>();
 			for(CourseTime ct:c.time) {
-				System.out.println("rec size"+rec.size());
-				System.out.println("week "+ct.cday.week+" day "+ct.cday.day+" time "+ct.tclass);
 				if(rec.containsKey(ct.cday)) {
-					System.out.println("already exist");
 					int current=Integer.parseInt(ct.tclass);
 					
 					if(current==rec.get(ct.cday).from -1) {
@@ -225,7 +234,6 @@ public class TimetableController extends Controller {
 					else if(current==rec.get(ct.cday).to+1) {
 						rec.get(ct.cday).to=current;
 					}
-					System.out.println(Integer.toString(rec.get(ct.cday).from)+Integer.toString(rec.get(ct.cday).to=current));
 				}
 				else {
 					span ts=new span(Integer.parseInt(ct.tclass),Integer.parseInt(ct.tclass));
@@ -238,8 +246,6 @@ public class TimetableController extends Controller {
 			for(Map.Entry<CourseDay,span> oneday : rec.entrySet()) {
 				CourseDay tkey=oneday.getKey();
 				span tvalue=oneday.getValue();
-				System.out.print(tkey.week+" "+tkey.day+" "+tvalue.from+" "+Integer.toString(tvalue.to)+" "+
-						c.name+c.classroom+c.other_info+"\n");
 				addBlock(new Interval(tkey.week,tkey.day,Integer.toString(tvalue.from),Integer.toString(tvalue.to)),
 						c.name+"\n"+c.classroom+"\n"+c.other_info);
 			}

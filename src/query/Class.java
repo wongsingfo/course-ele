@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 public class Class implements Comparable<Class> {
 	public String info,courseID,coursename,type,credit,teacher,classnum,classunit,profession,grade,classroom,other;
 	//info 中的顺序为 课程号 名字 种类 学分 老师 班号 开课单位 专业 年级 时间教室 人数 备注  以逗号间隔
