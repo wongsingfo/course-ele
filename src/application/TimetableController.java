@@ -131,8 +131,8 @@ public class TimetableController extends Controller {
 		}
 	}
 	
-	private final int prefWidth = 122;
-	private final int prefHeight = 40;
+	private final int prefWidth = 126;
+	private final int prefHeight = 33;
 	private final double paddingWidth = 10.0;
 	private final String[] colorScheme = {"#F8C3CD", "#FEDFE1"};
 	
@@ -183,7 +183,7 @@ public class TimetableController extends Controller {
 		// TODO Auto-generated method stub
 		table.getStyleClass().add("table-grid");
 		
-		table.getColumnConstraints().add(new ColumnConstraints(30));
+		table.getColumnConstraints().add(new ColumnConstraints(33));
 		for (int i = 1; i <= 7; i++) {
 			table.getColumnConstraints().add(new ColumnConstraints(prefWidth));
 		}

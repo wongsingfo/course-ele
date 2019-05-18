@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DashboardController">
    <children>
-      <Pane layoutY="-10.0" prefHeight="196.0" prefWidth="960.0" styleClass="pku-red" stylesheets="@style.css">
+      <Pane layoutY="-10.0" prefHeight="190.0" prefWidth="960.0" styleClass="pku-red" stylesheets="@style.css">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="97.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -23,7 +23,7 @@
                   <Image url="@../../image/1557508362_672242.png" />
                </image>
             </ImageView>
-            <Button fx:id="btnquery" layoutX="821.0" layoutY="54.0" mnemonicParsing="false" onAction="#btnclick" stylesheets="@style2.css">
+            <Button fx:id="btnquery" layoutX="820.0" layoutY="50.0" mnemonicParsing="false" onAction="#btnclick" stylesheets="@style2.css">
                <graphic>
                   <ImageView fitHeight="41.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                      <image>
