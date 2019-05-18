@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,11 +18,41 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
+import javafx.stage.Stage;
 import query.Class;
 import query.CourseQuery;
 import query.Interval;
 
 public class TimetableController extends Controller {
+	
+	@FXML
+    private Button btnback;
+
+    @FXML
+    private Button btnfavorite;
+
+    @FXML
+    private Button btntimetable;
+
+    @FXML
+    private Button btncourse;
+    
+    public void btn_Clicks(ActionEvent event) {
+    	Stage stage = (Stage)btnback.getScene().getWindow();
+    	if(event.getSource() == btnback) {
+    		replaceSceneContent(stage, "fxml-dashboard.fxml");
+    	}
+    	else if(event.getSource() == btncourse) {
+    		replaceSceneContent(stage, "fxml-courseinfo.fxml");
+    	}
+    	else if(event.getSource() == btnfavorite) {
+    		replaceSceneContent(stage, "fxml-favorite.fxml");
+    	}
+    	else if(event.getSource() == btntimetable) {
+    		replaceSceneContent(stage, "fxml-timetable.fxml");
+    	}
+    }
+	
 	public class span{
 		int from,to;
 		public span(int a,int b) {
