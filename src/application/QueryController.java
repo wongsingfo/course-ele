@@ -75,7 +75,7 @@ public class QueryController extends Controller implements Initializable{
     		Loaddata(txtquery.getText());
     	}
     	else if(event.getSource() == btncourse) {
-    		replaceSceneContent(stage, "fxml-course.fxml");
+    		replaceSceneContent(stage, "fxml-courseinfo.fxml");
     	}
     	else if(event.getSource() == btnfavorite) {
     		replaceSceneContent(stage, "fxml-favorite.fxml");    		
